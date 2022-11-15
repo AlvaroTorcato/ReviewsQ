@@ -75,7 +75,7 @@ public class RequestService {
     }
 
     public UserDetailsDTO makeRequestToAutentication(String jwt){
-        String urlRequest = "http://localhost:8084/auth/search/" + jwt;
+        String urlRequest = "http://localhost:8087/auth/search/" + jwt;
         UserDetailsDTO user = null;
         try {
             InputStream responseStream = openConn(urlRequest).getInputStream();
@@ -99,7 +99,7 @@ public class RequestService {
     }
 
     public ReviewDTO updateReviewFromApi(int reviewId, String status) {
-        String urlRequest = "http://localhost:8086/reviews/vote/" + reviewId + "/" + status;
+        String urlRequest = "http://localhost:8085/reviews/vote/" + reviewId + "/" + status;
         ReviewAPOD reviewDTO = null;
         try {
             InputStream responseStream = openConn(urlRequest).getInputStream();
