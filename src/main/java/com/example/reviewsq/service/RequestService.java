@@ -15,7 +15,7 @@ import java.net.URL;
 
 @Service
 public class RequestService {
-    String baseURL="http://localhost:8086/";
+    String baseURL="http://localhost:8084/";
 
 /*
     public List<ReviewDTO> retrievePendingReviewFromApi() throws IOException {
