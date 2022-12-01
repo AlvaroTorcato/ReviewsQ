@@ -1,7 +1,7 @@
-package com.example.reviewsq.service;
+package com.example.service;
 
-import com.example.reviewsq.model.*;
-import com.example.reviewsq.repository.ReviewRepository;
+import com.example.model.*;
+import com.example.repository.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

@@ -1,15 +1,11 @@
-package com.example.reviewsq.controller;
+package com.example.controller;
 
-import com.example.reviewsq.model.AggregateRating;
-import com.example.reviewsq.model.Review;
-import com.example.reviewsq.model.ReviewDTO;
-import com.example.reviewsq.model.ReviewDetailsDTO;
-import com.example.reviewsq.service.ReviewService;
+import com.example.model.AggregateRating;
+import com.example.model.ReviewDTO;
+import com.example.service.ReviewService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
