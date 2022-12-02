@@ -22,23 +22,6 @@ public class ReviewService {
     @Autowired
     private RequestService service;
 
-    public ReviewDTO createReview(final ReviewDetailsDTO resource, String sku, HttpServletRequest request) throws IOException {
-        int statusCode = getStatusCodeOfProduct(sku);
-        if (statusCode == 404){
-            throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Product Not Found");
-        }
-        String jwt = service.parseJwt(request);
-        UserDetailsDTO user = service.makeRequestToAutentication(jwt);
-
-        if (!user.getRoles().equals("[MODERATOR]") && !user.getRoles().equals("[COSTUMER]")){
-            System.out.println(user.getRoles());
-            throw  new ResponseStatusException(HttpStatus.FORBIDDEN, "Can´t be accessed by this user");
-        }
-        Review review = new Review(resource.getText(), resource.getRating(),sku, user.getId());
-        repository.save(review);
-        ReviewDTO reviewDTO = new ReviewDTO(review);
-        return reviewDTO;
-    }
     public List<ReviewDTO> findAllReviewsPending(Integer pageNo, Integer pageSize,HttpServletRequest request) {
         String jwt = service.parseJwt(request);
         UserDetailsDTO user = service.makeRequestToAutentication(jwt);
