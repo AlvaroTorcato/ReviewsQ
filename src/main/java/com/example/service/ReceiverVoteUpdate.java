@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @EnableRabbit
 @Component
-@RabbitListener(queues = "reviewsVoteUpdate1_queue_fanout", id = "listener")
+@RabbitListener(queues = "reviewsVoteUpdate1_queue_fanout", id = "listener4")
 public class ReceiverVoteUpdate {
     @Autowired
     ReviewRepository repository;
