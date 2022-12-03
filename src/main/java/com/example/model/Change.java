@@ -9,6 +9,9 @@ public class Change {
         this.status = status;
     }
 
+    public Change() {
+    }
+
     public int getId() {
         return id;
     }

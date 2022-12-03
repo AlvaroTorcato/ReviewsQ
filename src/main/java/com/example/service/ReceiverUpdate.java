@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.model.Change;
 import com.example.repository.ReviewRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,10 +16,10 @@ import org.springframework.stereotype.Component;
 public class ReceiverUpdate {
     @Autowired
     ReviewRepository repository;
-    private static Logger logger = LogManager.getLogger(RabbitMQReceiver.class.toString());
+    private static Logger logger = LogManager.getLogger(ReceiverUpdate.class.toString());
     @RabbitHandler
-    public void receiver(int id) {
-        repository.deleteByIdReview(id);
-        logger.info("MenuOrder listener invoked - Consuming Message with MenuOrder Identifier : " + id);
+    public void receiver(Change change) {
+        repository.updateReview(change.getStatus(),change.getId());
+        logger.info("MenuOrder listener invoked - Consuming Message with MenuOrder Identifier : " + change.toString());
     }
 }
