@@ -188,7 +188,7 @@ public class AggregateRating {
         this.frequency4 = ((float) this.count4) / list.size() * 100;
         this.frequency5 = ((float) this.count5) / list.size() * 100;
 
-        this.average = soma / list.size();
+        this.average = (float)soma / (float)list.size();
         }
         catch (Exception e){
             this.sku="0";
