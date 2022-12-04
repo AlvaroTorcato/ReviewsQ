@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class ReceiverVoteUpdate {
     @Autowired
     ReviewRepository repository;
-    private static Logger logger = LogManager.getLogger(RabbitMQReceiver.class.toString());
+    private static Logger logger = LogManager.getLogger(ReceiverVoteUpdate.class.toString());
     @RabbitHandler
     public void receiver(Votes vote) {
         repository.updateReviewWithVote(vote.getId(),vote.getUpVotes(), vote.getDownVotes(), vote.getTotalVotes());

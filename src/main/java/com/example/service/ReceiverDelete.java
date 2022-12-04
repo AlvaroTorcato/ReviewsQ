@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 public class ReceiverDelete {
     @Autowired
     ReviewRepository repository;
-    private static Logger logger = LogManager.getLogger(RabbitMQReceiver.class.toString());
+    private static Logger logger = LogManager.getLogger(ReceiverDelete.class.toString());
     @RabbitHandler
     public void receiver(int id) {
         repository.deleteByIdReview(id);
