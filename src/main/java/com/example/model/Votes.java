@@ -12,6 +12,9 @@ public class Votes {
         this.downVotes = downVotes;
         this.totalVotes = totalVotes;
     }
+    public Votes() {
+
+    }
 
     public int getId() {
         return id;
