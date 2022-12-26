@@ -27,15 +27,15 @@ public class ReceiverDelete {
         logger.info("MenuOrder listener invoked - Consuming Message with MenuOrder Identifier : " + id);
     }*/
     @RabbitListener(queues= "#{autoDeleteQueueDelete.name}")
-    public void consumeJsonMessage(String rev)throws JsonProcessingException {
+    public void consumeJsonMessage(int rev)throws JsonProcessingException {
         logger.info("MenuOrder listener invoked - Consuming Message with MenuOrder Identifier : " + rev);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        Review obj=objectMapper.readValue(rev, Review.class);
+        //ObjectMapper objectMapper = new ObjectMapper();
+        //Review obj=objectMapper.readValue(rev, Review.class);
 
 
         //jwtService.createJWT(obj);
 
-        repository.save(obj);
+        repository.deleteByIdReview(rev);
     }
 }
