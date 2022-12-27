@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+
 //@EnableRabbit
 //@Component
 //@RabbitListener(queues = "reviews1_queue_fanout", id = "listener")
@@ -22,10 +24,13 @@ import org.springframework.stereotype.Service;
 public class RabbitMQReceiver {
     @Autowired
     ReviewRepository repository;
+
+    @Autowired
+    ReviewService service;
     private static Logger logger = LogManager.getLogger(RabbitMQReceiver.class.toString());
 
     @RabbitListener(queues= "#{autoDeleteQueue.name}")
-    public void consumeJsonMessage(String rev)throws JsonProcessingException {
+    public void consumeJsonMessage(String rev) throws IOException {
         logger.info("MenuOrder listener invoked - Consuming Message with MenuOrder Identifier : " + rev);
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -34,7 +39,8 @@ public class RabbitMQReceiver {
 
         //jwtService.createJWT(obj);
 
-        repository.save(obj);
+        //repository.save(obj);
+        service.createReview(obj);
     }
     /*@RabbitHandler
     public void receiver(Review review) {

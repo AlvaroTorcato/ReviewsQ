@@ -20,6 +20,8 @@ import org.springframework.stereotype.Service;
 public class ReceiverDelete {
     @Autowired
     ReviewRepository repository;
+    @Autowired
+    ReviewService service;
     private static Logger logger = LogManager.getLogger(ReceiverDelete.class.toString());
     /*@RabbitHandler
     public void receiver(int id) {
@@ -36,6 +38,7 @@ public class ReceiverDelete {
 
         //jwtService.createJWT(obj);
 
-        repository.deleteByIdReview(rev);
+       // repository.deleteByIdReview(rev);
+        service.deleteById(rev);
     }
 }

@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.model.*;
 import com.example.repository.ReviewRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +22,34 @@ public class ReviewService {
 
     @Autowired
     private RequestService service;
+
+    public void createReview(Review review) throws IOException {
+        if(repository.findReviewById(review.getId())==null) repository.save(review);
+    }
+
+    public void deleteById(int review){
+
+        if (repository.findReviewById(review)==null ){
+            repository.deleteByIdReview(review);
+        }
+    }
+    public void changeStatus(Change review) throws JsonProcessingException {
+        repository.updateReview(review.getStatus(),review.getId());
+    }
+
+    public void updateReviewWithVote(Votes review) throws JsonProcessingException {
+        ReviewDTO reviewDTO= repository.findReviewByIdAndApproved(review.getId());
+        if (review == null){
+            // throw  new ResponseStatusException(HttpStatus.NOT_FOUND, "Review Not Found");
+        }
+        else {
+            int totalVotes = review.getTotalVotes();
+            int upVotes = review.getUpVotes();
+            int downVotes = review.getDownVotes();
+
+            repository.updateReviewWithVote(review.getId(),upVotes,downVotes,totalVotes);
+        }
+    }
 
     public List<ReviewDTO> findAllReviewsPending(Integer pageNo, Integer pageSize,HttpServletRequest request) {
         String jwt = service.parseJwt(request);

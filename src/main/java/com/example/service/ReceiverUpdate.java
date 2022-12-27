@@ -21,6 +21,8 @@ import org.springframework.stereotype.Service;
 public class ReceiverUpdate {
     @Autowired
     ReviewRepository repository;
+    @Autowired
+    ReviewService service;
     private static Logger logger = LogManager.getLogger(ReceiverUpdate.class.toString());
     /*@RabbitHandler
     public void receiver(Change change) {
@@ -37,6 +39,7 @@ public class ReceiverUpdate {
 
         //jwtService.createJWT(obj);
 
-        repository.updateReview(obj.getStatus(),obj.getId());
+        //repository.updateReview(obj.getStatus(),obj.getId());
+        service.changeStatus(obj);
     }
 }
