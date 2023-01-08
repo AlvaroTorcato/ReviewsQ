@@ -27,6 +27,10 @@ public class RabbitMQConfig {
         return new FanoutExchange("Rev");
     }
     @Bean
+    public DirectExchange exchange2 () {
+        return new DirectExchange("review");
+    }
+    @Bean
     public Queue autoDeleteQueue() {
         return new AnonymousQueue();
     }
