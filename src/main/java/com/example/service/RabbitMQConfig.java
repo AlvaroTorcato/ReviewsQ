@@ -22,6 +22,11 @@ import org.springframework.util.ErrorHandler;
 @Configuration
 //@EnableAutoConfiguration(exclude = RabbitAutoConfiguration.class)
 public class RabbitMQConfig {
+
+    @Bean
+    public DirectExchange directExchangeReview () {
+        return new DirectExchange("Review");
+    }
     @Bean
     public FanoutExchange fanout () {
         return new FanoutExchange("Rev");
