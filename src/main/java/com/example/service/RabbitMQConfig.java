@@ -24,10 +24,6 @@ import org.springframework.util.ErrorHandler;
 public class RabbitMQConfig {
 
     @Bean
-    public DirectExchange directExchangeReview () {
-        return new DirectExchange("Review");
-    }
-    @Bean
     public FanoutExchange fanout () {
         return new FanoutExchange("Rev");
     }
